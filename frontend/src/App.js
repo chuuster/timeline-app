@@ -75,11 +75,11 @@ class App extends Component {
           <EventForm closeForm={this.closeForm}/>
         }
 
-        <button onClick={this.openForm}>Add New Event</button>
+        <button id="add-event-button" onClick={this.openForm}>Add New Event</button>
 
-        <h2>
-          Upcoming Events
-        </h2>
+        <header>
+          <h2>Upcoming Events</h2>
+        </header>
 
         <ul>
           {this.state.data && 
@@ -87,9 +87,10 @@ class App extends Component {
           }
         </ul>
 
-        <h2>
-          Past Events
-        </h2>
+        <header>
+          <h2>Past Events</h2>
+        </header>
+
         <ul>
           {this.state.data &&
             this.pastListings().map(listing => <EventListing key={listing.id} listing={listing} />)

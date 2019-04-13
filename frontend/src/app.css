@@ -71,12 +71,14 @@ form {
 
 form h1 {
   text-align: center;
-  margin: 0.5em;
+  padding-bottom: 5px;
+  margin: 0.5em 0em;
+  border-bottom: 1px solid black;
 }
 
 label {
   display: flex;
-  margin: 10px 0px;
+  margin: 10px;
 }
 
 label span {
@@ -87,8 +89,12 @@ label span {
   margin: 0 auto;
 }
 
-label select, label input {
+label select {
   width: 50%;
+}
+
+label input {
+  width: calc(50% - 5px);
 }
 
 #submit-button-container {
@@ -107,10 +113,26 @@ label select, label input {
   color: darkgray;
 }
 
-#x-close-form-container:hover, li:hover {
+#x-close-form:hover, 
+li:hover, 
+button:hover {
   cursor: pointer;
 }
 
 li:hover {
   background: #e5e5e5;
+}
+
+h2 {
+  border-bottom: 1px solid black;
+}
+
+#add-event-button, #submit-button {
+  border-radius: 5px;
+  background: teal;
+  border:none;
+  font-size:1em;
+  color: white;
+  padding: 15px;
+  margin-bottom: 15px;
 }

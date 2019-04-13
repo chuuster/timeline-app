@@ -6,7 +6,7 @@ export default class EventForm extends Component {
       <div id="modal">
         <form>
           <div id="x-close-form-container">
-            <div id="x-close-form" onClick={this.props.closeForm}>x</div>
+            <span id="x-close-form" onClick={this.props.closeForm}>x</span>
           </div>
           <h1>Add Calendar Event</h1>
           <label>
