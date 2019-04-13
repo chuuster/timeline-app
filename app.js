@@ -10,6 +10,7 @@ app.get("/api/events", (req, res) => {
           "id": "1",
           "type": "court-date",
           "subject": "Court Date",
+          "attended": true,
           "date": "2019-04-05T09:00:00-07:00",
         },
         {
@@ -24,6 +25,7 @@ app.get("/api/events", (req, res) => {
           "type": "cm-appt",
           "subject": "Case Manager Appointment",
           "date": "2019-04-06T09:00:00-07:00",
+          "attended": true,
         },
         {
           "id": "4",
@@ -37,10 +39,11 @@ app.get("/api/events", (req, res) => {
           "type": "court-date",
           "subject": "Court Date",
           "date": "2019-05-07T09:00:00-07:00",
+          "attended": true,
         },
         {
           "id": "6",
-          "type": "date-update",
+          "type": "data-update",
           "subject": "Client Data Updated",
           "date": "2019-03-29T09:00:00-07:00",
         },
@@ -49,12 +52,14 @@ app.get("/api/events", (req, res) => {
           "type": "cm-appt",
           "subject": "Case Manager Appointment",
           "date": "2019-03-06T09:00:00-07:00",
+          "attended": true,
         },
         {
           "id": "8",
           "type": "court-date",
           "subject": "Court Date",
           "date": "2019-02-28T09:00:00-07:00",
+          "attended": true,
         },
       ]
     }
