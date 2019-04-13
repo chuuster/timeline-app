@@ -18,7 +18,7 @@ app.get("/api/events", (req, res) => {
           "type": "reminder",
           "subject": "Reminder for Court Date",
           "body": "Hello John, reminder that you have court tomorrow at 9:00am. If you need assistance with transportation please contact your case manager at 555-555-5555.",
-          "date": "2019-04-29T09:00:00-07:00",
+          "date": "2019-04-06T09:00:00-07:00",
         },
         {
           "id": "3",
@@ -39,7 +39,6 @@ app.get("/api/events", (req, res) => {
           "type": "court-date",
           "subject": "Court Date",
           "date": "2019-05-07T09:00:00-07:00",
-          "attended": true,
         },
         {
           "id": "6",

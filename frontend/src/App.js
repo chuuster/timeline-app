@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import EventListing from './components/event';
+import EventListing from './components/eventListing';
+import EventForm from './components/eventForm';
 import './normalize.css';
 import './app.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.orderListings = this.orderListings.bind(this);
+    this.openForm = this.openForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+  }
+
   state = {
-    data: null
+    data: null,
+    showForm: false,
   };
 
   componentDidMount() {
@@ -25,17 +34,56 @@ class App extends Component {
     return body;
   };
 
+  orderListings() {
+    const sortedDates = this.state.data.sort((a, b) => {
+      if (new Date(b.date) < new Date(a.date)) {
+        return -1;
+      } else if (new Date(b.date) > new Date(a.date)) {
+        return 1; 
+      } else {
+        return 0;
+      }
+    })
+
+    return sortedDates; 
+  }
+
+  upcomingListings() {
+    let listings = this.orderListings(); 
+    return listings.filter(listing => new Date(listing.date) > new Date()); 
+  }
+
+  pastListings() {
+    let listings = this.orderListings(); 
+    return listings.filter(listing => new Date(listing.date) < new Date()); 
+  }
+
+  openForm() {
+    this.setState({showForm: true});
+    console.log(this.state);
+  }
+
+  closeForm() {
+    this.setState({ showForm: false });
+  }
+
   render() {
+    console.log('render');
     return (
       <div className="app">
-        <button>Add New Event</button>
+        {(this.state.showForm) && 
+          <EventForm closeForm={this.closeForm}/>
+        }
+
+        <button onClick={this.openForm}>Add New Event</button>
+
         <h2>
           Upcoming Events
         </h2>
 
         <ul>
           {this.state.data && 
-            this.state.data.map(listing => <EventListing key={listing.id} listing={listing}/>)
+            this.upcomingListings().map(listing => <EventListing key={listing.id} listing={listing}/>)
           }
         </ul>
 
@@ -44,7 +92,7 @@ class App extends Component {
         </h2>
         <ul>
           {this.state.data &&
-            this.state.data.map(listing => <EventListing key={listing.id} listing={listing} />)
+            this.pastListings().map(listing => <EventListing key={listing.id} listing={listing} />)
           }
         </ul>
 

@@ -1,5 +1,5 @@
 .app {
-  padding-top: 5%;
+  padding: 5% 0%;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -20,6 +20,7 @@ li {
   list-style: none;
   padding: 20px;
   display: flex;
+  border-radius: 5px;
 }
 
 .date-container {
@@ -28,12 +29,16 @@ li {
   font-size: 0.8em;
 } 
 
-.icon-container {
+.icon-container, .attended-container {
   width: 5%;
 }
 
+.attended-container {
+  color: green;
+}
+
 .content-container { 
-  width: 70%;
+  width: 65%;
 }
 
 .body-container {
@@ -41,4 +46,71 @@ li {
   padding: 15px;
   background: lightgray; 
   border-radius: 5px;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.3);
+  padding: 50px;
+}
+
+form {
+  background: #fff;
+  border-radius: 5px;
+  max-width: 500px;
+  min-height: 300px;
+  margin: 0 auto;
+  padding: 15px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+form h1 {
+  text-align: center;
+  margin: 0.5em;
+}
+
+label {
+  display: flex;
+  margin: 10px 0px;
+}
+
+label span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;  
+  width: 50%;
+  margin: 0 auto;
+}
+
+label select, label input {
+  width: 50%;
+}
+
+#submit-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#submit-button {
+  width: 200px;
+  margin-top: 35px;
+}
+
+#x-close-form-container {
+  text-align: right;
+  font-size: 1.5em;
+  color: darkgray;
+}
+
+#x-close-form-container:hover, li:hover {
+  cursor: pointer;
+}
+
+li:hover {
+  background: #e5e5e5;
 }
