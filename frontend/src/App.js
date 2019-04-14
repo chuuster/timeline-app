@@ -60,7 +60,6 @@ class App extends Component {
 
   openForm() {
     this.setState({showForm: true});
-    console.log(this.state);
   }
 
   closeForm() {
@@ -68,7 +67,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('render');
     return (
       <div className="app">
         {(this.state.showForm) && 
