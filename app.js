@@ -5,6 +5,8 @@ const port = 5000;
 app.get("/api/events", (req, res) => {
   res.json(
     {
+      "status": "success",
+      "message": null, 
       "data": [
         {
           "id": "1",

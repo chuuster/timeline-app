@@ -10,12 +10,11 @@ class App extends Component {
     this.orderListings = this.orderListings.bind(this);
     this.openForm = this.openForm.bind(this);
     this.closeForm = this.closeForm.bind(this);
+    this.state = {
+      data: null,
+      showForm: false,
+    };
   }
-
-  state = {
-    data: null,
-    showForm: false,
-  };
 
   componentDidMount() {
     this.callBackendAPI()
@@ -26,13 +25,13 @@ class App extends Component {
   callBackendAPI = async () => {
     const response = await fetch('/api/events');
     const body = await response.json();
-
+    
     if (response.status !== 200) {
-      throw Error(body.message)
+      throw Error(body.message);
     }
-
+    
     return body;
-  };
+  }
 
   orderListings() {
     const sortedDates = this.state.data.sort((a, b) => {
