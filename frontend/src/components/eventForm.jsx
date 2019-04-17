@@ -32,9 +32,8 @@ export default class EventForm extends Component {
       },
       method: 'POST',
       body: JSON.stringify(this.state)
-    })
-      // .then(resp => console.log(resp))
-      // .then(body => console.log(body));
+    });
+
     console.log("submitted");
   }
 
@@ -52,9 +51,8 @@ export default class EventForm extends Component {
             <span>Event Type</span>
             <select onChange={this.handleInput("type")}>
               <option disabled selected value> -- Select an Option -- </option>
-              <option>Case Manager Appointment</option>
-              <option>Court Date</option>
-              <option>Client Data Updated</option>
+              <option value="cm-appt">Case Manager Appointment</option>
+              <option value="court-date">Court Date</option>
             </select>
           </label>
           
@@ -67,8 +65,8 @@ export default class EventForm extends Component {
             <span>Attended? (if applicable)</span>
             <select onChange={this.handleInput("attended")}>
               <option disabled selected value> -- Select Yes or No -- </option>
-              <option>Yes</option>
-              <option>No</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
             </select>
           </label>
           

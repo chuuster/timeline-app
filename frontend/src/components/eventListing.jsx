@@ -30,7 +30,7 @@ export default class EventListing extends Component {
 
         <div className="attended-container">
           { this.props.listing.attended && 
-            <i className={this.conditionalRenders["attended"].icon}></i>
+            <i className={this.conditionalRenders[attended].icon}></i>
           }
         </div>
         
