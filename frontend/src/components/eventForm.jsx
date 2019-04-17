@@ -5,41 +5,77 @@ export default class EventForm extends Component {
     super(props); 
     this.state = {
       type: null, 
-      
+      date: null, 
+      attended: null
     }; 
+    this.handleInput = this.handleInput.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  handleInput(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
+  }
+
+  submitForm(e) {
+    e.preventDefault();
+    this.props.closeForm();
+    const jsonState = JSON.stringify(this.state); 
+    
+    console.log(jsonState);
+    console.log(this.state); 
+    
+    fetch('/api/events/', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(this.state)
+    })
+      // .then(resp => console.log(resp))
+      // .then(body => console.log(body));
+    console.log("submitted");
   }
 
   render() {
     return (
       <div id="modal">
-        <form>
+        <form onSubmit={this.submitForm}>
           <div id="x-close-form-container">
             <span id="x-close-form" onClick={this.props.closeForm}>x</span>
           </div>
+          
           <h1>Add Calendar Event</h1>
+          
           <label>
             <span>Event Type</span>
-            <select>
+            <select onChange={this.handleInput("type")}>
               <option disabled selected value> -- Select an Option -- </option>
               <option>Case Manager Appointment</option>
               <option>Court Date</option>
+              <option>Client Data Updated</option>
             </select>
           </label>
+          
           <label>
             <span>Date</span>
-            <input type="datetime-local"></input>
+            <input type="datetime-local" onChange={this.handleInput("date")}></input>
           </label>
+          
           <label>
             <span>Attended? (if applicable)</span>
-            <select>
+            <select onChange={this.handleInput("attended")}>
               <option disabled selected value> -- Select Yes or No -- </option>
               <option>Yes</option>
               <option>No</option>
             </select>
           </label>
+          
           <div id="submit-button-container">
-            <button id="submit-button" onClick={this.props.closeForm}>Submit</button>
+            <input type="submit" id="submit-button"></input>
           </div>
+        
         </form>
       </div>
     ); 

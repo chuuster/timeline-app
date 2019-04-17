@@ -115,7 +115,8 @@ label input {
 
 #x-close-form:hover, 
 li:hover, 
-button:hover {
+button:hover,
+#submit-button:hover {
   cursor: pointer;
 }
 
