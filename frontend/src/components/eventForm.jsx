@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 export default class EventForm extends Component {
+  constructor(props) {
+    super(props); 
+    this.state = {
+      type: null, 
+      
+    }; 
+  }
+
   render() {
     return (
       <div id="modal">

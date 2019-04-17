@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     this.callBackendAPI()
-      .then(res => this.setState({ data: res.data }))
+      .then(res => this.setState({ data: res.data.events }))
       .catch(err => console.log(err));
   }
 
