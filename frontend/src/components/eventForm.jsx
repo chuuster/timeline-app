@@ -14,7 +14,7 @@ export default class EventForm extends Component {
 
   handleInput(field) {
     return (e) => {
-      this.setState({[field]: e.target.value});
+      this.setState({[field]: e.target.value}, () => {return;});
     };
   }
 
@@ -29,6 +29,11 @@ export default class EventForm extends Component {
       method: 'POST',
       body: JSON.stringify(this.state)
     })
+      .then(() => this.setState({
+        type: null,
+        date: null,
+        attended: null
+      }))
       .then(() => this.props.fetchData())
       .catch(err => console.log(err));
   }
@@ -45,8 +50,8 @@ export default class EventForm extends Component {
           
           <label>
             <span>Event Type</span>
-            <select onChange={this.handleInput("type")}>
-              <option disabled selected value> -- Select an Option -- </option>
+            <select required defaultValue="" onChange={this.handleInput("type")}>
+              <option disabled value=""> -- Select an Option -- </option>
               <option value="cm-appt">Case Manager Appointment</option>
               <option value="court-date">Court Date</option>
             </select>
@@ -54,17 +59,19 @@ export default class EventForm extends Component {
           
           <label>
             <span>Date</span>
-            <input type="datetime-local" onChange={this.handleInput("date")}></input>
+            <input required type="datetime-local" onChange={this.handleInput("date")}></input>
           </label>
           
-          <label>
-            <span>Attended? (if applicable)</span>
-            <select onChange={this.handleInput("attended")}>
-              <option disabled selected value> -- Select Yes or No -- </option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </label>
+          {(this.state.date !== null && new Date(this.state.date) < new Date()) && 
+            <label>
+              <span>Attended?</span>
+              <select defaultValue="" onChange={this.handleInput("attended")}>
+                <option disabled value=""> -- Select Yes or No -- </option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </label>
+          }
           
           <div id="submit-button-container">
             <input type="submit" id="submit-button"></input>

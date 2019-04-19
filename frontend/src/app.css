@@ -29,12 +29,16 @@ li {
   font-size: 0.8em;
 } 
 
-.icon-container, .attended-container {
+.icon-container, .attended-container, .unattended-container {
   width: 5%;
 }
 
 .attended-container {
   color: green;
+}
+
+.unattended-container {
+  color: red;
 }
 
 .content-container { 

@@ -9,7 +9,7 @@
       "id": "2",
       "type": "reminder",
       "date": "2019-04-06T09:00:00-07:00",
-      "attended": false
+      "attended": null
     },
     {
       "id": "3",
@@ -20,20 +20,20 @@
     {
       "id": "4",
       "type": "reminder",
-      "date": "2019-05-06T09:00:00-07:00",
-      "attended": false
+      "date": "2019-04-23T09:00:00-07:00",
+      "attended": null
     },
     {
       "id": "5",
       "type": "court-date",
-      "date": "2019-05-07T09:00:00-07:00",
+      "date": "2019-04-24T09:00:00-07:00",
       "attended": false
     },
     {
       "id": "6",
       "type": "data-update",
       "date": "2019-03-29T09:00:00-07:00",
-      "attended": false
+      "attended": null
     },
     {
       "id": "7",
@@ -45,6 +45,12 @@
       "id": "8",
       "type": "court-date",
       "date": "2019-02-28T09:00:00-07:00",
+      "attended": false
+    },
+    {
+      "id": "9",
+      "type": "court-date",
+      "date": "2019-04-07T09:00:00-07:00",
       "attended": true
     }
 ]
