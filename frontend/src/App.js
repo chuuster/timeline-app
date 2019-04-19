@@ -10,6 +10,7 @@ class App extends Component {
     this.orderListings = this.orderListings.bind(this);
     this.openForm = this.openForm.bind(this);
     this.closeForm = this.closeForm.bind(this);
+    this.updateData = this.updateData.bind(this);
     this.state = {
       data: null,
       showForm: false,
@@ -17,9 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.data }))
-      .catch(err => console.log(err));
+    this.updateData();
   }
 
   callBackendAPI = async () => {
@@ -31,6 +30,12 @@ class App extends Component {
     }
     
     return body;
+  }
+
+  updateData() {
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => console.log(err));
   }
 
   orderListings() {
@@ -69,7 +74,7 @@ class App extends Component {
     return (
       <div className="app">
         {(this.state.showForm) && 
-          <EventForm closeForm={this.closeForm}/>
+          <EventForm closeForm={this.closeForm} fetchData={this.updateData}/>
         }
 
         <button id="add-event-button" onClick={this.openForm}>Add New Event</button>

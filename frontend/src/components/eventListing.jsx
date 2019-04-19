@@ -14,9 +14,14 @@ export default class EventListing extends Component {
   }
 
   render() {
-    const dateDisplay = moment(this.props.listing.date).format('MMMM Do YYYY h:mm a');
+    const date = moment(this.props.listing.date);
+    const dateDisplay = date.format('MMMM Do YYYY h:mm a');
     const attended = (this.props.listing.attended) ? "attended" : "unattended";
     const type = this.props.listing.type;
+    let body;
+    if (type === 'reminder') {
+      body = `Hello John, reminder that you have court ${date.add(1, 'days').calendar()}. If you need assistance with transportation please contact your case manager at 555-555-5555.`; 
+    }
 
     return (
       <li>
@@ -38,7 +43,7 @@ export default class EventListing extends Component {
           {this.conditionalRenders[type].subject}
           { this.props.listing.body && 
             <div className="body-container">
-              {this.props.listing.body}
+              {body}
             </div>
           }
         </div>

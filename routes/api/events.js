@@ -10,7 +10,6 @@ fs.readFile('data.json', 'utf8', function (err, jsonString) {
 });
 
 router.get("/", (req, res) => {
-  console.log(eventsData);
   res.json(
     {
       "data": eventsData,
@@ -37,7 +36,7 @@ router.post("/", (req, res) => {
       "type": "reminder",
       "date": reminderDate,
       "body": `Hello John, reminder that you have court tomorrow at ${eventDate.format('h:mm a')}. If you need assistance with transportation please contact your case manager at 555-555-5555.`,
-      "attended": req.body.attended === "Yes" 
+      "attended": false
     };
   }
 
@@ -47,6 +46,8 @@ router.post("/", (req, res) => {
   fs.writeFile('../../data.json', JSON.stringify(eventsData), (err) => {
     if (err) console.log('Error writing file:', err);
   });
+
+  res.send("Event added.");
 });
 
 module.exports = router;

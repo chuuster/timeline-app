@@ -21,10 +21,6 @@ export default class EventForm extends Component {
   submitForm(e) {
     e.preventDefault();
     this.props.closeForm();
-    const jsonState = JSON.stringify(this.state); 
-    
-    console.log(jsonState);
-    console.log(this.state); 
     
     fetch('/api/events/', {
       headers: {
@@ -32,9 +28,9 @@ export default class EventForm extends Component {
       },
       method: 'POST',
       body: JSON.stringify(this.state)
-    });
-
-    console.log("submitted");
+    })
+      .then(() => this.props.fetchData())
+      .catch(err => console.log(err));
   }
 
   render() {

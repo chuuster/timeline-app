@@ -3,13 +3,11 @@
       "id": "1",
       "type": "court-date",
       "attended": true,
-      "date": "2019-04-05T09:00:00-07:00",
-      "attended": false
+      "date": "2019-04-05T09:00:00-07:00"
     },
     {
       "id": "2",
       "type": "reminder",
-      "body": "Hello John, reminder that you have court tomorrow at 9:00am. If you need assistance with transportation please contact your case manager at 555-555-5555.",
       "date": "2019-04-06T09:00:00-07:00",
       "attended": false
     },
@@ -22,7 +20,6 @@
     {
       "id": "4",
       "type": "reminder",
-      "body": "Hello John, reminder that you have court tomorrow at 9:00am. If you need assistance with transportation please contact your case manager at 555-555-5555.",
       "date": "2019-05-06T09:00:00-07:00",
       "attended": false
     },
